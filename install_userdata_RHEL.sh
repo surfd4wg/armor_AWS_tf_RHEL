@@ -128,15 +128,16 @@ PRIVATE_IP=$(TOKEN=`curl -sS -X PUT "http://169.254.169.254/latest/api/token" -H
 PUBLIC_IP=$(TOKEN=`curl -sS -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` 2>/dev/null && curl -sS -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/public-ipv4 2>/dev/null)
 
 #CREATE and set new HOSTNAME, /etc/hosts file, /etc/sysconfig/network file
-NEWprivatehostname="craigums-$PRIVATE_IP-$AVAIL_ZONE-$PRETTYpretty-$INSTANCE_ID"
-NEWpublichostname="craigums-$PUBLIC_IP-$AVAIL_ZONE-$PRETTYpretty-$INSTANCE_ID"
+#NEWprivatehostname="craigums-$PRIVATE_IP-$AVAIL_ZONE-RedHat"
+#NEWpublichostname="craigums-$PUBLIC_IP-$AVAIL_ZONE-RedHat"
 #VarPUB="$(echo "$NEWpublichostname" | tr -d ' ')"
 #VarPRI="$(echo "$NEWprivatehostname" | tr -d ' ')"
 
 #VarPUB="$(echo "$NEWpublichostname" | cut -d ' ')"
-VarPUB="$( cut -d ' ' -f1,2 <<< "$NEWpublichostname" )"-"$INSTANCE_ID"; echo "$VarPUB"
-VarPRI="$( cut -d ' ' -f1,2 <<< "$NEWprivatehostname" )"-"$INSTANCE_ID"; echo "$VarPRI"
-
+#VarPUB="$( cut -d ' ' -f 1,2 <<< "$NEWpublichostname" )"-"$INSTANCE_ID"; echo "$VarPUB"
+#VarPRI="$( cut -d ' ' -f 1,2 <<< "$NEWprivatehostname" )"-"$INSTANCE_ID"; echo "$VarPRI"
+VarPRI="craigums-$PRIVATE_IP-$AVAIL_ZONE-RedHat"-"$INSTANCE_ID"
+VarPUB="craigums-$PUBLIC_IP-$AVAIL_ZONE-RedHat"-"$INSTANCE_ID"
 echo "NEW Private hostname:"$NEWprivatehostname
 echo "NEW Public hostname:"$NEWpublichostname
 echo "VarPUB:"$VarPUB
