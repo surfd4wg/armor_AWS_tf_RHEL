@@ -1,6 +1,6 @@
 This is a Terraform script that automatically builds an Ubuntu Server in AWS EC2. It also installs various programs through a EC2 user data shell script. The various programs are: -Armor Agent 3.0 -Chrome -Apache2 -xrdp -User + Password for Remote Desktop
 
-Change the ARMOR License Key in the install_userdata_debian.sh file.
+Change the ARMOR License Key in the install_userdata_RHEL.sh file.
 
 Rename variables.example to variables.tf, in the same directory as the main.tf file.
 
