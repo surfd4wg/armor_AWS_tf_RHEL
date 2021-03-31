@@ -11,7 +11,7 @@ Once the Machine is running in AWS EC2... you will see the username and password
 This user has sudo privileges so !!**** please change your password for this user, the ubuntu user and also the root user ****!!
 
 SSH into the machine using the Public DNS (IPv4) address in the EC2 console, for the instance, and your private key. 
-ssh -i ~/.ssh/(keyfile).pem admin@ec2-X-X-X-X.compute-1.amazonaws.com
+ssh -i ~/.ssh/(keyfile).pem ec2-user@ec2-X-X-X-X.compute-1.amazonaws.com
 
 If you want to RDP into the machine you will need to install RHEL desktop.
 https://www.itzgeek.com/how-tos/linux/centos-how-tos/how-to-install-xrdp-on-red-hat-enterprise-linux-8.html
