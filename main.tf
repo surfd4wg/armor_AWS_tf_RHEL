@@ -44,6 +44,7 @@ resource "aws_instance" "webserver" {
         tomap(
           {"Zoo" = "AWS Zoofarm"
           "RESOURCE" = "webserver AMI"
+	  "Name" = "${var.myname}-${random_id.server.hex}-${count.index + 1}"
           }
         )
         )
@@ -55,6 +56,7 @@ resource "aws_instance" "webserver" {
   subnet_id                   = aws_subnet.main.id
   associate_public_ip_address = true
   user_data = "${file("install_userdata_RHEL.sh")}"
+  count = var.instance_count
 #  provisioner "remote-exec" {
 #    inline = [
 #      "sudo apt update",
